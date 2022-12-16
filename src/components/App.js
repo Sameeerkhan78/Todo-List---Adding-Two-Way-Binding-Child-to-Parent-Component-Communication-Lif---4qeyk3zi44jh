@@ -1,14 +1,19 @@
-import React from "react";
-import "./../styles/App.css";
-
-function App() 
-{
-	return (
-	<div id="main">
-	//Do not alter main div
-	//Please do not alter the functional component as tests depend on the type of component.
-	</div>
-	);
+import React, { useReducer } from 'react'
+import { todoReducer } from '../reducers/todo';
+import '../styles/App.css';
+import { AddTodo } from './AddTodo';
+import { Todo } from './Todo';
+const App = () => {
+  const [state,dispatch] = useReducer(todoReducer,{/* Initial todo state array, could be an array for storing indivial todo objects */})
+  
+ 
+  return (
+    <div id="main">
+      <AddTodo dispatch={dispatch} state={state} />
+      <Todo dispatch={dispatch} state={state}/>
+     {/* Render list of Todo Components here */}
+    </div>
+  )
 }
 
 
